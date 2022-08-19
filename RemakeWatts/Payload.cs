@@ -75,15 +75,20 @@ namespace RemakeWatts
         }
         public void payload4()
         {
+            /*
             new Thread(() =>
             {
                 SoundPlayer player = new SoundPlayer(Properties.Resources.Paris_Platynov_zalewa_cały_sprzęt_cisowianka_Rage_roku);
                 player.PlayLooping();
             }).Start();
+            */
+            Thread thread = new Thread(() =>
+            {
+                Application.Run(new Download());
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
-        public void payload5()
-        {
 
-        }
     }
 }

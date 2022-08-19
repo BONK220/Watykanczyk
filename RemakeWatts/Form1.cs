@@ -63,40 +63,8 @@ namespace RemakeWatts
                     case 4:
                         payload.payload4();
                         break;
-                    case 5:
-                        payload.payload5();
-                        break;
                 }
                 Thread.Sleep(10000);
-            }
-        }
-
-        public void DownloadLibraries(String link, String path)
-        {
-            using(WebClient wc = new WebClient())
-            {
-                wc.Headers.Add("a", "a");
-                try
-                {
-                    wc.DownloadFile(link, @path);
-                }
-                catch(Exception ex)
-                {
-                    DialogResult retry = MessageBox.Show("Warning!", "Failed to download additional libraries", MessageBoxButtons.RetryCancel);
-                    if(retry == DialogResult.Retry)
-                    {
-                        wc.DownloadFile(link, @path);
-                    }
-                    if(retry == DialogResult.Cancel)
-                    {
-                        wc.DownloadFile(link, @path);
-                    }
-                    else
-                    {
-                        Console.WriteLine("");
-                    }
-
-                }
             }
         }
 
