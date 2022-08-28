@@ -1,47 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace RemakeWatts
 {
-    public partial class Download : Form
+    public class Download
     {
-        WebClient client;
-
-        public Download()
+        public void download(String url, String path)
         {
-            InitializeComponent();
-            string url = "https://s03.winiso.pl/files/Windows7/pl_windows_7_professional_with_sp1_x64_dvd_u_676944.iso";
-            Thread thread = new Thread(() =>
-            {
-                client = new WebClient();
-                Uri uri = new Uri(url);
-                string filename = System.IO.Path.GetFileName(uri.AbsolutePath);
-                client.DownloadProgressChanged += Client_DownloadProgressChanged;
-                client.DownloadStringCompleted += Client_DownloadProgressCompleted;
-                client.DownloadFileAsync(uri, Application.StartupPath + "/" + filename);
-            });
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private void Client_DownloadProgressCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            MessageBox.Show("Download complete!", "New orders!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            progressBar1.Minimum = 0;
-            progressBar1.Value = e.ProgressPercentage;
+            WebClient client = new WebClient();
+            Uri uri = new Uri(url);
+            string filename = Path.GetFileName(uri.AbsolutePath);
+            client.DownloadFileAsync(uri, $"{path}/{filename}");
         }
     }
 }
