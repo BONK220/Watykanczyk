@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemakeWatts", "RemakeWatts\
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WattsSetup", "WattsSetup\WattsSetup.vdproj", "{E377840E-FE74-4746-A1FA-D23F5B852091}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payloads", "Payloads\Payloads.csproj", "{24B044E9-4E2C-4EAA-B9D9-1BC17C879854}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{95B57C14-9EC3-423D-86D0-E3E0F967C6D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E377840E-FE74-4746-A1FA-D23F5B852091}.Debug|Any CPU.ActiveCfg = Debug
 		{E377840E-FE74-4746-A1FA-D23F5B852091}.Release|Any CPU.ActiveCfg = Release
+		{24B044E9-4E2C-4EAA-B9D9-1BC17C879854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24B044E9-4E2C-4EAA-B9D9-1BC17C879854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24B044E9-4E2C-4EAA-B9D9-1BC17C879854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24B044E9-4E2C-4EAA-B9D9-1BC17C879854}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

