@@ -29,7 +29,7 @@ namespace RemakeWatts
                 SoundPlayer player = new SoundPlayer(Properties.Resources.Vicetone__Tony_Igy___Astronomia_2014);
                 player.PlayLooping();
             }).Start();
-            InitializeCompon;
+            InitializeComponent();
             RandomPayload();
             
         }
