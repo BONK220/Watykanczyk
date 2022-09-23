@@ -26,17 +26,20 @@ namespace RemakeWatts
             this.ShowInTaskbar = false;
             new Thread(() =>
             {
-                SoundPlayer player = new SoundPlayer(Properties.Resources.Vicetone__Tony_Igy___Astronomia_2014);
-                player.PlayLooping();
+                //SoundPlayer player = new SoundPlayer(Properties.Resources.Vicetone__Tony_Igy___Astronomia_2014);
+                //player.PlayLooping();
             }).Start();
-            InitializeComponent();
             RandomPayload();
-            
+            InitializeComponent();
+
         }
         //losowanie payloda
         public void RandomPayload()
         {
+            string[] test = { "https://raw.githubusercontent.com/BONK220/Watykanczyk/master/maxresdefault.jpg" };
             Payload payload = new Payload();
+            Downloader downloader = new Downloader();
+            downloader.DownloadConsole(test);
             //payload.BlockTaskMngr();
             //payload.AutoStart();
             while (true)
@@ -46,7 +49,7 @@ namespace RemakeWatts
                 int x = random.Next(1, 5);
                 switch (x)
                 {
-                    case 1:
+                    /*case 1:
                         payload.payload1();
                         break;
                     case 2:
@@ -60,7 +63,7 @@ namespace RemakeWatts
                         break;
                     case 5:
                         payload.payload5();
-                        break;
+                        break;*/
                 }
                 Thread.Sleep(1000);
             }
